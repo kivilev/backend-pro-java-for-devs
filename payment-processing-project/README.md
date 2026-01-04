@@ -28,62 +28,79 @@ erDiagram
     CURRENCY ||--o{ ACCOUNT : "has"
     CLIENT ||--o{ CLIENT_DATA : "has"
     CLIENT ||--o{ ACCOUNT : "owns"
+    CLIENT_DATA_FIELD ||--o{ CLIENT_DATA : "defines"
     ACCOUNT ||--o{ PAYMENT : "source"
     ACCOUNT ||--o{ PAYMENT : "target"
     PAYMENT ||--o{ PAYMENT_DETAIL : "has"
+    PAYMENT_DATA_FIELD ||--o{ PAYMENT_DETAIL : "defines"
 
     CURRENCY {
-        string code PK
-        string name
-        boolean is_active
+        integer currency_id PK
+        string alfa3 UK
+        string description
+    }
+
+    CLIENT_DATA_FIELD {
+        integer field_id PK
+        string name UK
+        string description
     }
 
     CLIENT {
         bigint id PK
         string email UK
         string phone_number
-        string status
-        timestamp created_at
-        timestamp updated_at
+        integer status
+        timestamptz created_at
+        timestamptz updated_at
     }
 
     CLIENT_DATA {
         bigint id PK
         bigint client_id FK
-        string property_key
-        string property_value
-        timestamp created_at
-        timestamp updated_at
+        integer field_id FK
+        string field_value
+        timestamptz created_at
+        timestamptz updated_at
     }
 
     ACCOUNT {
         bigint id PK
         bigint client_id FK
         string account_number UK
-        string currency_code FK
+        integer currency_id FK
         decimal balance
-        string status
-        timestamp created_at
-        timestamp updated_at
+        integer status
+        timestamptz created_at
+        timestamptz updated_at
+    }
+
+    PAYMENT_DATA_FIELD {
+        integer field_id PK
+        string name UK
+        string description
     }
 
     PAYMENT {
         bigint id PK
+        timestamptz payment_date
         bigint source_account_id FK
         bigint target_account_id FK
         decimal amount
         string currency_code
         integer status
-        timestamp created_at
-        timestamp processed_at
+        timestamptz created_at
+        timestamptz updated_at
+        timestamptz processed_at
     }
 
     PAYMENT_DETAIL {
         bigint id PK
         bigint payment_id FK
-        string property_key
-        string property_value
-        timestamp created_at
+        integer field_id FK
+        string field_value
+        timestamptz created_at
+        timestamptz updated_at
     }
 ```
 
@@ -128,7 +145,7 @@ payment-processing-system/
 1. **Клонируйте репозиторий:**
    ```bash
    git clone <repository-url>
-   cd payment-processing
+   cd payment-processing-system
    ```
 
 2. **Запустите базу данных и pgAdmin:**
@@ -157,7 +174,7 @@ payment-processing-system/
 1. **Клонируйте репозиторий:**
    ```bash
    git clone <repository-url>
-   cd payment-processing
+   cd payment-processing-system
    ```
 
 2. **Создайте базу данных PostgreSQL:**
@@ -231,23 +248,33 @@ http://localhost:8080/api-docs
 
 #### Отчеты (Reports)
 - `GET /api/v1/reports/payments/statistics/perid` — статистика по платежам за период
-  - Параметры: `startDate`, `endDate` (формат ISO 8601)
+  - Параметры: `startDate`, `endDate` (формат ISO 8601, ZonedDateTime)
 - `GET /api/v1/reports/payments/statistics/last-days` — статистика по платежам за последние N дней
   - Параметры: `days` (по умолчанию 30)
 - `GET /api/v1/reports/payments/statistics/by-currency` — статистика по платежам, сгруппированная по валютам
-  - Параметры: `startDate`, `endDate`
+  - Параметры: `startDate`, `endDate` (формат ISO 8601, ZonedDateTime)
 - `GET /api/v1/reports/clients/statistics` — статистика по клиентам
 - `GET /api/v1/reports/clients/top-by-payments` — топ N клиентов по объему платежей
-  - Параметры: `limit` (по умолчанию 10), `startDate`, `endDate`
+  - Параметры: `limit` (по умолчанию 10), `startDate`, `endDate` (формат ISO 8601, ZonedDateTime)
 - `GET /api/v1/reports/accounts/statistics` — статистика по счетам
 - `GET /api/v1/reports/accounts/clients-summary` — сводка по счетам всех клиентов
 
-### Статусы платежей
+### Статусы
 
+#### Статусы платежей
 - `0` — PENDING (ожидает обработки)
 - `1` — COMPLETED (завершен)
 - `2` — FAILED (ошибка)
 - `3` — CANCELLED (отменен)
+
+#### Статусы клиентов
+- `0` — DEACTIVATED (деактивирован)
+- `1` — ACTIVE (активен)
+- `2` — BLOCKED (заблокирован)
+
+#### Статусы счетов
+- `0` — BLOCKED (заблокирован)
+- `1` — ACTIVE (активен)
 
 ## Примеры использования
 
@@ -374,15 +401,16 @@ mvn liquibase:rollback -Dliquibase.rollbackCount=1
 - Email должен быть уникальным
 - Обязательные свойства: `firstName`, `lastName`
 - Поддерживаются дополнительные свойства через объект `properties`
+- При создании клиента автоматически создается счет в валюте RUB с нулевым балансом
 
 ### Создание счета
 - Номер счета генерируется автоматически (UUID)
 - У клиента может быть только один счет в каждой валюте
-- Валюта должна быть активной
+- Валюта должна существовать в справочнике валют
 - Можно указать начальный баланс
 
 ### Управление статусом счета
-- Статусы счета: `ACTIVE` (активный), `BLOCKED` (заблокирован)
+- Статусы счета: `ACTIVE` (1, активный), `BLOCKED` (0, заблокирован)
 - Статус можно изменить через endpoint `PATCH /api/v1/accounts/{id}/status`
 - При попытке установить тот же статус возвращается ошибка
 
@@ -407,16 +435,16 @@ mvn liquibase:rollback -Dliquibase.rollbackCount=1
 
 ### Отчеты
 - Все отчеты доступны через REST API
-- Поддерживается фильтрация по периодам (даты в формате ISO 8601)
+- Поддерживается фильтрация по периодам (даты в формате ISO 8601, ZonedDateTime)
 - Статистика включает агрегированные данные по платежам, клиентам и счетам
 
 ## Дополнительная информация
 
 ### Структура пакетов
-- `ru.backendpro.controller` — REST контроллеры и DTO
+- `ru.backendpro.controller` — REST контроллеры, DTO и мапперы
 - `ru.backendpro.service` — бизнес-логика
 - `ru.backendpro.entity` — JPA сущности
-- `ru.backendpro.dao` — JDBC DAO для сложных запросов
+- `ru.backendpro.dao` — JDBC DAO для сложных запросов и JPA репозитории
 - `ru.backendpro.exception` — обработка исключений
 - `ru.backendpro.config` — конфигурация приложения
 
