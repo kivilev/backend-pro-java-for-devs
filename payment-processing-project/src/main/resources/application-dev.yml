@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    show-sql: true
+
+  task:
+    scheduling:
+      enabled: false
+
+logging:
+  level:
+    root: INFO
+    ru.backendpro: DEBUG
+    org.hibernate.engine.jdbc.spi.SqlExceptionHelper: INFO
+    org.springframework.orm.jpa: INFO
+    org.hibernate: INFO
+    org.hibernate.orm.jdbc.mutation: INFO
+    org.hibernate.resource.transaction: INFO
