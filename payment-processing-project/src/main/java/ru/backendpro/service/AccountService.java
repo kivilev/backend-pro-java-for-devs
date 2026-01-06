@@ -114,7 +114,7 @@ public class AccountService {
             log.info("Account balance updated: accountNumber={}, oldBalance={}, newBalance={}, amount={}",
                     accountNumber, oldBalance, newBalance, amount);
             
-// TODO: Отправить событие в Kafka об изменении баланса счета (account.balance.changed)
+            // TODO: Отправить событие в Kafka об изменении баланса счета (account.balance.changed)
         } catch (LockTimeoutException | PessimisticLockException e) {
             log.warn("Account lock timeout during balance update: accountNumber={}", accountNumber, e);
             throw new AccountLockTimeoutException(
