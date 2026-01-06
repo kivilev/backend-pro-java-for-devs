@@ -12,10 +12,10 @@
 ## Материалы к уроку
 
 ### Полезные ссылки
-[https://en.wikipedia.org/wiki/Java_version_history](История Java-версий)  
-[https://bell-sw.com/pages/downloads/#jdk-21-lts](JDK Liberica)  
-[https://www.jetbrains.com/ru-ru/idea/download/](Ссылка на IDEA. Community + Ultimate в одном дистрибутиве)  
-[https://maven.apache.org/download.cgi](Download Maven)  
+[https://en.wikipedia.org/wiki/Java_version_history] (История Java-версий)  
+[https://bell-sw.com/pages/downloads/#jdk-21-lts] (JDK Liberica)  
+[https://www.jetbrains.com/ru-ru/idea/download/] (Ссылка на IDEA. Community + Ultimate в одном дистрибутиве)  
+[https://maven.apache.org/download.cgi] (Download Maven)  
 
 ### Структура проекта
 
@@ -120,14 +120,10 @@ javac -version
 ---
 
 #### Шаг 2: Установка Maven (5 минут)
-**Зачем:** Maven нужен для сборки проекта и запуска команд `mvn clean compile`, `mvn test`, `mvn package`.
+Maven нужен для сборки проекта и запуска команд `mvn clean compile`, `mvn test`, `mvn package`.  
 
-**Вариант A (допустимо на старте): Maven из IntelliJ (Bundled)**
-- В IntelliJ Maven обычно уже встроен (bundled), можно собирать проекты из IDE без отдельной установки Maven.
-- Но в системном терминале команда `mvn` может быть недоступна.
-
-**Вариант B (рекомендуется): установка Maven в систему (чтобы работал `mvn` в cmd/PowerShell/Terminal)**
-1. Скачать Maven (binary zip) с официального сайта Apache.
+**Действия преподавателя:**
+1. [https://maven.apache.org/download.cgi] (Скачать Maven) (binary zip) с официального сайта Apache.
 2. Распаковать, например:
    - Windows: `C:\tools\apache-maven-3.x.x\`
    - macOS/Linux: `~/tools/apache-maven-3.x.x/` или `/opt/apache-maven-3.x.x/`
