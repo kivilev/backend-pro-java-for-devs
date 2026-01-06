@@ -1,0 +1,9 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ru.backendpro</groupId>
+    <artifactId>payment-processing-system</artifactId>
+    <version>1.0.0</version>
+    
+    <dependencies>
+    </dependencies>
+</project>
