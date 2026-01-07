@@ -12,10 +12,10 @@
 ## Материалы к уроку
 
 ### Полезные ссылки
-[https://en.wikipedia.org/wiki/Java_version_history] (История Java-версий)  
-[https://bell-sw.com/pages/downloads/#jdk-21-lts] (JDK Liberica)  
-[https://www.jetbrains.com/ru-ru/idea/download/] (Ссылка на IDEA. Community + Ultimate в одном дистрибутиве)  
-[https://maven.apache.org/download.cgi] (Download Maven)  
+История Java-версий - https://en.wikipedia.org/wiki/Java_version_history  
+JDK Liberica - https://bell-sw.com/pages/downloads/#jdk-21-lts
+IDEA Community + Ultimate в одном дистрибутиве - https://www.jetbrains.com/ru-ru/idea/download/
+Download Maven - https://maven.apache.org/download.cgi
 
 ### Структура проекта
 
@@ -123,7 +123,7 @@ javac -version
 Maven нужен для сборки проекта и запуска команд `mvn clean compile`, `mvn test`, `mvn package`.  
 
 **Действия преподавателя:**
-1. [https://maven.apache.org/download.cgi] (Скачать Maven) (binary zip) с официального сайта Apache.
+1. [Скачать Maven](https://maven.apache.org/download.cgi) (binary zip) с официального сайта Apache.
 2. Распаковать, например:
    - Windows: `C:\tools\apache-maven-3.x.x\`
    - macOS/Linux: `~/tools/apache-maven-3.x.x/` или `/opt/apache-maven-3.x.x/`
