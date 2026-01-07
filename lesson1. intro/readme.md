@@ -6,16 +6,16 @@
 ### Оглавление
 * [Материалы к уроку](#материалы-к-уроку)
 * [LIVE CODING БЛОК](#-live-coding-блок-с-преподавателем)
-* [ДОМАШНЕЕ ЗАДАНИЕ](#-домашнее-задание)
+* [ДОМАШНЕЕ ЗАДАНИЕ](#homework)
 
 
 ## Материалы к уроку
 
 ### Полезные ссылки
 История Java-версий - https://en.wikipedia.org/wiki/Java_version_history  
-JDK Liberica - https://bell-sw.com/pages/downloads/#jdk-21-lts
-IDEA Community + Ultimate в одном дистрибутиве - https://www.jetbrains.com/ru-ru/idea/download/
-Download Maven - https://maven.apache.org/download.cgi
+JDK Liberica - https://bell-sw.com/pages/downloads/#jdk-21-lts  
+IDEA Community + Ultimate в одном дистрибутиве - https://www.jetbrains.com/ru-ru/idea/download/  
+Download Maven - https://maven.apache.org/download.cgi  
 
 ### Структура проекта
 
@@ -533,7 +533,7 @@ blank.isBlank(): true
 
 ---
 
-## 🏠 ДОМАШНЕЕ ЗАДАНИЕ (сквозная работа)
+## <a name="homework"></a> 🏠 ДОМАШНЕЕ ЗАДАНИЕ (сквозная работа)
 
 ### Задание: Создать Maven-проект и написать простейшую программу
 **Описание:**
