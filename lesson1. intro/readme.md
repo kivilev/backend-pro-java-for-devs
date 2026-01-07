@@ -18,7 +18,7 @@ IDEA Community + Ultimate в одном дистрибутиве - https://www.j
 Download Maven - https://maven.apache.org/download.cgi  
 
 ### Структура проекта
-
+```
 my-project/  
 ├── src/ # Исходный код  
 │    ├── main/  
@@ -35,6 +35,7 @@ my-project/
 │      └── ru/backendpro/  
 │        └── Main.class  
 └── pom.xml # Конфигурация Maven (зависимости, плагины)  
+```
 
 ### POM.xml - очень упрощенное содержимое файла
 ```
@@ -63,7 +64,7 @@ java -cp payment-processing-system-1.0.0.jar ru.backendpro.MyApp
 ```
 
 ### Добавление плагина checkstyle по проверке кода
-
+```
 <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-checkstyle-plugin</artifactId>
@@ -82,7 +83,7 @@ java -cp payment-processing-system-1.0.0.jar ru.backendpro.MyApp
 				</execution>
 		</executions>
 </plugin>
-
+```
 Так же нужно в корень проекта добавить файл: checkstyle.xml (находится в папке checkstyle-rules)
 
 
@@ -202,7 +203,7 @@ hello-world-app/
 │   │       └── ru/backendpro/
 │   │           └── Main.java
 │   └── test/
-│   │   └── java/
+│        └── java/
 └── pom.xml
 ```
 
