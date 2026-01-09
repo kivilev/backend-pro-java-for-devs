@@ -1,0 +1,38 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+*.iml
+.vscode
+*.swp
+*.swo
+
+# Build directories (кроме target/payment-processing-system-*.jar)
+target/classes
+target/test-classes
+target/generated-sources
+target/generated-test-sources
+target/maven-archiver
+target/maven-status
+target/surefire-reports
+target/*.xml
+target/checkstyle-*
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.bak
+
+# Documentation
+*.md
+!README.md
+
+# Local configuration
+*.local
+.env.local
+

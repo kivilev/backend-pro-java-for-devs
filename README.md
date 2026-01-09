@@ -15,3 +15,7 @@
 название PR/PR должно совпадать с названием папки.
 Например: pr-lesson1-first-project
 6. Только после аппрува преподавателем, pull request сливается в main-ветку.
+
+## Рекомендуемая литература
+1. "Effective Java" by Joshua Bloch (классика для Java-разработчиков)
+2. "Clean Code" by Robert Martin (принципы чистого кода)

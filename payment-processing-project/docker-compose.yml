@@ -19,6 +19,25 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  # Приложение (раскомментировать после сборки: mvn clean package -DskipTests)
+  # app:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: payment-system-app
+  #   environment:
+  #     SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/payment_db
+  #     SPRING_DATASOURCE_USERNAME: payment_user
+  #     SPRING_DATASOURCE_PASSWORD: payment_pass
+  #   ports:
+  #     - "8080:8080"
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+  #   networks:
+  #     - payment-network
+  #   restart: unless-stopped
+
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: payment-system-pgadmin
