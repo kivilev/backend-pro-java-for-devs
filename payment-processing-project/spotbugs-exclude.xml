@@ -20,6 +20,7 @@
             <!-- Reference exposure, our implementation deliberately uses this. -->
             <Bug pattern="EI_EXPOSE_REP"/>
             <Bug pattern="EI_EXPOSE_REP2"/>
+            <Bug pattern="DM_CONVERT_CASE"/>
         </Or>
     </Match>
 
