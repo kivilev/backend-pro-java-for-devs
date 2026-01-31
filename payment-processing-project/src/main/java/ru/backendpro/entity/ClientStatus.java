@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum ClientStatus {
-    DEACTIVATED(0, true),
+    INACTIVE(0, true),
     ACTIVE(1, false),
     BLOCKED(2, false);
 

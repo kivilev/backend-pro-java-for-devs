@@ -28,7 +28,7 @@ public class ClientAccountSummaryResponseDto {
     @Schema(description = "Номер телефона клиента", example = "+1234567890")
     private String phoneNumber;
 
-    @Schema(description = "Статус клиента", example = "ACTIVE", allowableValues = {"DEACTIVATED", "ACTIVE", "BLOCKED"})
+    @Schema(description = "Статус клиента", example = "ACTIVE", allowableValues = {"INACTIVE", "ACTIVE", "BLOCKED"})
     private ClientStatus status;
 
     @Schema(description = "Дата создания клиента", example = "2024-01-15T10:30:00Z")

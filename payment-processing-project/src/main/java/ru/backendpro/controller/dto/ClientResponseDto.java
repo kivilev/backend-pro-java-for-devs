@@ -27,7 +27,7 @@ public class ClientResponseDto {
     @Schema(description = "Номер телефона клиента", example = "+1234567890")
     private String phoneNumber;
 
-    @Schema(description = "Статус клиента", example = "ACTIVE", allowableValues = {"DEACTIVATED", "ACTIVE", "BLOCKED"})
+    @Schema(description = "Статус клиента", example = "ACTIVE", allowableValues = {"INACTIVE", "ACTIVE", "BLOCKED"})
     private ClientStatus status;
 
     @Schema(description = "Дополнительные свойства клиента", example = "{\"firstName\": \"John\", \"lastName\": \"Doe\"}")

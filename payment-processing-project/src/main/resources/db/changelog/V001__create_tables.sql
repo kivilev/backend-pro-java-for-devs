@@ -162,7 +162,7 @@ COMMENT ON COLUMN client_data_field.description IS 'Описание поля';
 COMMENT ON COLUMN client.id IS 'Идентификатор клиента';
 COMMENT ON COLUMN client.email IS 'Электронная почта клиента';
 COMMENT ON COLUMN client.phone_number IS 'Номер телефона клиента';
-COMMENT ON COLUMN client.status IS 'Статус клиента. Значения: 0=DEACTIVATED (Деактивирован), 1=ACTIVE (Активен), 2=BLOCKED (Заблокирован)';
+COMMENT ON COLUMN client.status IS 'Статус клиента. Значения: 0=INACTIVE (Неактивен), 1=ACTIVE (Активен), 2=BLOCKED (Заблокирован)';
 COMMENT ON COLUMN client.created_at IS 'Дата и время создания записи';
 COMMENT ON COLUMN client.updated_at IS 'Дата и время последнего обновления записи';
 
@@ -180,7 +180,7 @@ COMMENT ON COLUMN account.client_id IS 'Идентификатор клиент�
 COMMENT ON COLUMN account.account_number IS 'Номер счета (UUID)';
 COMMENT ON COLUMN account.currency_id IS 'Идентификатор валюты счета';
 COMMENT ON COLUMN account.balance IS 'Баланс счета';
-COMMENT ON COLUMN account.status IS 'Статус счета. Значения: 0=BLOCKED (Заблокирован), 1=ACTIVE (Активен)';
+COMMENT ON COLUMN account.status IS 'Статус счета. Значения: 0=BLOCKED (Заблокирован), 1=ACTIVE (Активен), 2=CLOSED (Закрыт)';
 COMMENT ON COLUMN account.created_at IS 'Дата и время создания записи';
 COMMENT ON COLUMN account.updated_at IS 'Дата и время последнего обновления записи';
 

@@ -18,7 +18,7 @@ import ru.backendpro.entity.ClientStatus;
 public class ClientStatusUpdateRequestDto {
 
     @NotNull(message = "Status is required")
-    @Schema(description = "Новый статус клиента", example = "BLOCKED", requiredMode = Schema.RequiredMode.REQUIRED, allowableValues = {"DEACTIVATED", "ACTIVE", "BLOCKED"})
+    @Schema(description = "Новый статус клиента", example = "BLOCKED", requiredMode = Schema.RequiredMode.REQUIRED, allowableValues = {"INACTIVE", "ACTIVE", "BLOCKED"})
     private ClientStatus status;
 }
 

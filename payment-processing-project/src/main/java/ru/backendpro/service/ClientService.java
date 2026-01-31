@@ -151,13 +151,13 @@ public class ClientService {
                         return new ResourceNotFoundException("Client not found with id: " + id);
                     });
             
-            if (client.getStatus() == ClientStatus.DEACTIVATED) {
+            if (client.getStatus() == ClientStatus.INACTIVE) {
                 log.debug("Client is already deactivated: id={}", id);
                 return;
             }
             
             ClientStatus oldStatus = client.getStatus();
-            client.setStatus(ClientStatus.DEACTIVATED);
+            client.setStatus(ClientStatus.INACTIVE);
             clientRepository.save(client);
             log.info("Client deactivated successfully: id={}, oldStatus={}", id, oldStatus);
             

@@ -107,14 +107,14 @@ class ClientMapperTest {
     }
 
     @Test
-    @DisplayName("Should map Client to ClientResponseDto when status is DEACTIVATED")
+    @DisplayName("Should map Client to ClientResponseDto when status is INACTIVE")
     void mapToResponse_WhenClientStatusIsDeactivated_ShouldReturnDeactivatedStatus() {
         // Given
         Client client = Client.builder()
                 .id(3L)
                 .email("deactivated@example.com")
                 .phoneNumber("+9876543210")
-                .status(ClientStatus.DEACTIVATED)
+                .status(ClientStatus.INACTIVE)
                 .clientData(new ArrayList<>())
                 .build();
 
@@ -124,7 +124,7 @@ class ClientMapperTest {
         // Then
         assertNotNull(result);
         assertEquals(3L, result.getId());
-        assertEquals(ClientStatus.DEACTIVATED, result.getStatus());
+        assertEquals(ClientStatus.INACTIVE, result.getStatus());
     }
 
     @Test

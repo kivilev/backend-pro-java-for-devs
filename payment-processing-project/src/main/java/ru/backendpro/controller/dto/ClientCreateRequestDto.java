@@ -31,7 +31,7 @@ public class ClientCreateRequestDto {
     private String phoneNumber;
 
     @NotNull(message = "Status is required")
-    @Schema(description = "Статус клиента", example = "ACTIVE", requiredMode = Schema.RequiredMode.REQUIRED, allowableValues = {"DEACTIVATED", "ACTIVE", "BLOCKED"})
+    @Schema(description = "Статус клиента", example = "ACTIVE", requiredMode = Schema.RequiredMode.REQUIRED, allowableValues = {"INACTIVE", "ACTIVE", "BLOCKED"})
     private ClientStatus status;
 
     @Schema(description = "Дополнительные свойства клиента", example = "{\"firstName\": \"John\", \"lastName\": \"Doe\", \"middleName\": \"Michael\", \"birthday\": \"1990-01-15\", \"passportSeries\": \"1234\", \"passportNumber\": \"567890\"}")
